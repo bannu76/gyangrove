@@ -1,0 +1,82 @@
+.upcome-event-card{
+    list-style-type: none;
+    border-color: #B0BABF;
+    
+    border-radius: 12px;
+    padding: 12px;
+    height: 350px;
+    margin: 12px;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+
+ 
+    line-height: 1;
+}
+.event-image
+{
+    width: 100%;
+    height: 250px;
+    position: relative;
+    stroke: #B0BABF;
+  z-index: -1;
+    border-radius: 14px;
+    
+}
+.upcome-event-row-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 80%;
+    position: relative;
+    width: 100%;
+    background-color: #000000;
+    columns: #ffffff;
+    margin-top: -40px;
+   z-index: 1;
+    border-radius: 14px;
+    opacity: .6;
+    
+}
+.upcome-event-name{
+    color: #1E2022;
+    text-align: left;
+    font-size: 100%;
+}
+
+.upcome-event-details-container{
+    align-self: flex-start;
+    width: 100%;
+}
+.upcome-event-location-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+color: #B0BABF;
+    font-size: 10px;
+   width: 100%;
+
+   
+    
+}
+.upcome-event-location-container    div{
+    display: flex;
+    flex-direction: row;
+   
+    align-items: center;
+    
+
+}
+
+@media screen and (min-width:576px) {
+    .upcome-event-card{
+        width: 25%;
+        max-height: 400px;
+    }   
+     .event-image{
+        max-height:400px ;
+     }
+}
