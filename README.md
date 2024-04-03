@@ -1,7 +1,8 @@
 
 # Title: City Celebrations
 
-## DESCRIPTION: City Celebrations shows all the Events, Festivals,movies,..etc, of all over the India. 
+## DESCRIPTION: 
+City Celebrations shows all the Events, Festivals,movies,..etc, of all over the India. 
 
 ## Features: 
 On choosing city/State name, it give a list of events of  the specific city/state. An event is shown with weather condition and a distance from your current location
