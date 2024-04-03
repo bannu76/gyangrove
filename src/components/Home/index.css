@@ -12,7 +12,8 @@
     position: relative;
     z-index: 1;
     color: #ffffff;
-    text-align: center;     
+    text-align: center;
+    padding: 12px;     
 }
 
 
@@ -33,8 +34,8 @@
     flex-direction: column;
     align-self: flex-start;
     position: absolute;
-    border-style: solid;
-    width: 100%;
+    
+    width: 98%;
     z-index: 2;
     top: 70%;
 }
@@ -59,7 +60,7 @@
     white-space: nowrap;
     align-items: center;
     overflow-x: auto;
-    border-style: solid;
+    scrollbar-width: none;
     height: 250px;
    
     
@@ -112,5 +113,10 @@
         
         padding-top: 20%;
     }
+    
+}
+@media screen and (max-width:576px) {
+
+   
     
 }

@@ -21,18 +21,21 @@ const EventItem = (props) => {
 
   const updateDate = new Date(item.date);
 
+  const urlArray = item.imgUrl.split("/");
+  const imageId = urlArray[5];
+
   const eventMonth = months[updateDate.getMonth()];
   const eventDate = updateDate.getDate();
   const eventYear = updateDate.getFullYear();
   const distance = Math.floor(item.distanceKm / 1000);
 
   return (
-    <li
-      className="event-card"
-      style={{
-        backgroundImage: `url(${item.imgUrl})`,
-      }}
-    >
+    <li className="event-card">
+      <img
+        className="recomend-event-image"
+        src={`https://drive.google.com/thumbnail?id=${imageId}&sz=w${1000}-h${1000}`}
+        alt="event"
+      />
       <div className="event-container">
         <div className="event-details-container">
           <p className="event-name">{item.eventName}</p>

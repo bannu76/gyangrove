@@ -6,6 +6,16 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 import "./index.css";
 
+const showTypes = [
+  { name: "Live Shows" },
+  { name: "Streams" },
+  { name: "Movies" },
+  { name: "Plays" },
+  { name: "Events" },
+  { name: "Sports" },
+  { name: "Activitites" },
+];
+
 const Header = () => {
   const renderMobileHeader = () => {
     return (
@@ -30,6 +40,13 @@ const Header = () => {
           <p>Mumbai,India</p>
           <IoIosArrowForward />
         </div>
+        <ul className="show-tab-container">
+          {showTypes.map((item) => (
+            <li key={showTypes.indexOf(item)} className="show-tab-item">
+              <button className="show-button">{item.name}</button>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   };
@@ -66,34 +83,18 @@ const Header = () => {
           <IoIosArrowForward />
         </div>
         <ul className="show-tab-container">
-          <li className="show-tab-item">
-            <button className="show-button">Live Shows</button>
-          </li>
-          <li className="show-tab-item">
-            <button className="show-button">Streams</button>
-          </li>
-          <li className="show-tab-item">
-            <button className="show-button">Movies</button>
-          </li>
-          <li className="show-tab-item">
-            <button className="show-button">Plays</button>
-          </li>
-          <li className="show-tab-item">
-            <button className="show-button">Events</button>
-          </li>
-          <li className="show-tab-item">
-            <button className="show-button">Sports</button>
-          </li>
-          <li className="show-tab-item">
-            <button className="show-button">Activities</button>
-          </li>
+          {showTypes.map((item) => (
+            <li key={showTypes.indexOf(item)} className="show-tab-item">
+              <button className="show-button">{item.name}</button>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
   );
 
   return (
-    <div>
+    <div className="header">
       {renderMobileHeader()}
       {renderDestopHeader()}
     </div>

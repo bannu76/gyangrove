@@ -9,6 +9,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import UpComeEvent from "../UpComeEvent";
 const Home = () => {
   const [recommendLoad, setRecommendLoad] = useState(true);
+  const [page, setPage] = useState(1);
   const [upcomeLoad, setUpcomeLoad] = useState(true);
   const [fetchError, setFetchError] = useState("");
   const [upcomeTotalResults, setUpcomeTotalResults] = useState(0);
@@ -18,13 +19,18 @@ const Home = () => {
 
   const getData = async () => {
     const options = {
-      method: "get",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     };
     const url =
       "https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&type=reco";
     const response = await fetch(url, options);
+
     if (response.ok) {
       const { events } = await response.json();
+
       setRecommendList(events);
     } else {
       setFetchError("Network Error");
@@ -33,16 +39,20 @@ const Home = () => {
 
   const getUpcomeEventData = async () => {
     const options = {
-      method: "get",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     };
-    const url =
-      "https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&page=1&type=upcoming";
+    const url = `https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&page=${page}&type=upcoming`;
     const response = await fetch(url, options);
     console.log(response);
     if (response.ok) {
       const { events } = await response.json();
-      setUpcomingList(events);
+
+      setUpcomingList((prev) => [...prev, ...events]);
       setUpcomeTotalResults(events.length);
+      setPage(page + 1);
     } else {
       setFetchError("Network Error");
     }
@@ -71,6 +81,7 @@ const Home = () => {
   };
 
   const fetchMoreData = () => {
+    console.log(page);
     getUpcomeEventData();
   };
 
@@ -88,7 +99,7 @@ const Home = () => {
         </div>
 
         <InfiniteScroll
-          dataLength={upcomingList.length} //This is important field to render the next data
+          dataLength={upcomingList.length}
           next={fetchMoreData}
           hasMore={upcomingList.length !== upcomeTotalResults}
           loader={renderLoader()}

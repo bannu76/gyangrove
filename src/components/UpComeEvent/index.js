@@ -18,19 +18,23 @@ const months = [
 
 const UpComeEvent = (props) => {
   const { item } = props;
-  console.log(item);
+
+  const urlArray = item.imgUrl.split("/");
+  const imageId = urlArray[5];
+
   const updateDate = new Date(item.date);
 
   const eventMonth = months[updateDate.getMonth()];
   const eventDate = updateDate.getDate();
   const eventYear = updateDate.getFullYear();
   const distance = Math.floor(item.distanceKm / 1000);
+
   return (
     <li className="upcome-event-card">
       <img
         loading="lazy"
         className="event-image"
-        src={item.imgUrl}
+        src={`https://drive.google.com/thumbnail?id=${imageId}&sz=w${1000}-h${1000}`}
         alt={`${item.cityName}`}
       />
 
@@ -44,8 +48,8 @@ const UpComeEvent = (props) => {
         <h6 className="upcome-event-name">{item.eventName}</h6>
         <div className="upcome-event-location-container">
           <div>
-            <FaLocationDot />
-            <p>{item.cityName}</p>
+            <FaLocationDot size={16} />
+            <p style={{ marginLeft: "2px" }}>{item.cityName}</p>
           </div>
           <div>
             <p>{`${item.weather} \u00A0| `}</p>
