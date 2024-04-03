@@ -68,9 +68,11 @@
 
 @media screen and (max-width:576px) {
     
+    .event-card{
+        min-width: 200px;
+    }
     .recomend-event-image{
         width: 100%;
-        
     }
     
 }

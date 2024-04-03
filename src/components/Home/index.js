@@ -8,15 +8,16 @@ import EventItem from "../EventItem";
 import InfiniteScroll from "react-infinite-scroll-component";
 import UpComeEvent from "../UpComeEvent";
 const Home = () => {
-  const [recommendLoad, setRecommendLoad] = useState(true);
-  const [page, setPage] = useState(1);
-  const [upcomeLoad, setUpcomeLoad] = useState(true);
-  const [fetchError, setFetchError] = useState("");
-  const [upcomeTotalResults, setUpcomeTotalResults] = useState(0);
+  const [recommendLoad, setRecommendLoad] = useState(true); //flag to fetch recommended events
+  const [page, setPage] = useState(1); // upcoming event's pages
+  const [upcomeLoad, setUpcomeLoad] = useState(true); // flag for upcoming events networkApi call
+  const [fetchError, setFetchError] = useState(""); // network call error
+  const [upcomeTotalResults, setUpcomeTotalResults] = useState(0); // total upcoming events length for infinite scrolling
 
-  const [recommendList, setRecommendList] = useState([]);
-  const [upcomingList, setUpcomingList] = useState([]);
+  const [recommendList, setRecommendList] = useState([]); // Recommend Events List
+  const [upcomingList, setUpcomingList] = useState([]); // Upcomming Events list
 
+  // Api call for recommend events
   const getData = async () => {
     const options = {
       method: "GET",
@@ -37,6 +38,7 @@ const Home = () => {
     }
   };
 
+  // Api call for Upcoming events list
   const getUpcomeEventData = async () => {
     const options = {
       method: "GET",
@@ -57,17 +59,21 @@ const Home = () => {
       setFetchError("Network Error");
     }
   };
+
+  // loader
   const renderLoader = () => (
     <div className="loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#000000" height="50" width="50" />
     </div>
   );
 
+  // Initial Api call when site is opened
   useEffect(() => {
     getData();
     getUpcomeEventData();
   }, []);
 
+  // Rendering Recommed List
   const renderRecommendList = () => {
     console.log(upcomingList);
 
@@ -80,11 +86,13 @@ const Home = () => {
     );
   };
 
+  // api call to fetch pages of upcoming events for infinite scroll
   const fetchMoreData = () => {
     console.log(page);
     getUpcomeEventData();
   };
 
+  // Rendering Upcoming Evnts List
   const renderUpcomingEvents = () => {
     return (
       <div>
@@ -113,6 +121,8 @@ const Home = () => {
     );
   };
 
+  // Rendering landing page
+
   return (
     <div className="home">
       <Header />
@@ -122,7 +132,7 @@ const Home = () => {
             Discover Exciting Events Happening Near You <br /> Stay Tuned for
             Updates!
           </h1>
-          <p className="para-mobile">
+          <p className="para">
             Dorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum, ac
           </p>

@@ -52,8 +52,8 @@
 
 .upcome-event-details-container{
     align-self: flex-start;
-    width: 94%;
-    margin-left: 3%;
+    width: 90%;
+    margin-left: 12px;
     
     
 }
@@ -62,10 +62,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-color: #B0BABF;
+    color: #989090;
     font-size: 10px;
    width: 100%;
-
+   
    
     
 }
@@ -73,9 +73,11 @@ color: #B0BABF;
     display: flex;
     flex-direction: row;
    
+ 
+  flex-wrap: nowrap;
+
     align-items: center;
 }
-
 
 @media screen and (min-width:576px) {
     .upcome-event-card{

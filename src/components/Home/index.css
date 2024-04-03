@@ -2,6 +2,7 @@
     background-color: #ffffff;
     
     
+    
 }
 .home-container-mobile{
     background-image: url("https://res.cloudinary.com/dcyavhlbc/image/upload/v1711846315/resize-17118462562000213487Banner2_ofbm1h.png");
@@ -24,9 +25,11 @@
 }
 .home-heading{
     font-size: 25px;
+   
 }
 .para{
-    font-size: 20px;
+    font-size: 18px;
+    
 }
 
 .recommend-events-container{
@@ -50,21 +53,22 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 98%;
     justify-content: space-between;
     
 }
 .scroll-container{
-    padding: 20px;
+    
     display: flex;
     flex-direction: row;
     white-space: nowrap;
     align-items: center;
     overflow-x: auto;
     scrollbar-width: none;
-    height: 250px;
+    height: 400px; 
+     
    
-    
-   
+     
 }
 .see-all-button{
     text-decoration: underline;
@@ -79,6 +83,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 98%;
     justify-content: space-between;
     color: #1E2022;
     
@@ -103,9 +108,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
+    padding: 0px;
+    margin: 0px;
+    
 }
 
 @media screen and (min-width:576px) {

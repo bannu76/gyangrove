@@ -1,8 +1,8 @@
-import { FaLocationDot, FaUser } from "react-icons/fa6";
-import { MdOutlineFavorite, MdSearch } from "react-icons/md";
+import { FaLocationDot, FaUser } from "react-icons/fa6"; // location,use icons
+import { MdOutlineFavorite, MdSearch } from "react-icons/md"; // favorite, search icons
 
-import { IoIosArrowForward } from "react-icons/io";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { IoIosArrowForward } from "react-icons/io"; // arrow icon
+import { GiHamburgerMenu } from "react-icons/gi"; // nav bar icon
 
 import "./index.css";
 
@@ -15,6 +15,8 @@ const showTypes = [
   { name: "Sports" },
   { name: "Activitites" },
 ];
+
+// Responsive Mobile Header
 
 const Header = () => {
   const renderMobileHeader = () => {
@@ -50,6 +52,8 @@ const Header = () => {
       </div>
     );
   };
+
+  // Responsive Desktop Header
 
   const renderDestopHeader = () => (
     <div className="header-container-desktop">

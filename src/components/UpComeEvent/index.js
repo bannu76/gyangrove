@@ -1,5 +1,7 @@
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot } from "react-icons/fa6"; // location icons from react icons
 import "./index.css";
+
+// events months list
 
 const months = [
   "January",
@@ -16,6 +18,7 @@ const months = [
   "December",
 ];
 
+// return upcome event
 const UpComeEvent = (props) => {
   const { item } = props;
 
@@ -29,12 +32,14 @@ const UpComeEvent = (props) => {
   const eventYear = updateDate.getFullYear();
   const distance = Math.floor(item.distanceKm / 1000);
 
+  // for Image , google drive url is not being accessed(throws CORBS warning),
+  //so image url is modified as "https://drive.google.com/thumbnail?id=${imageId}&sz=w${1000}-h${1000}"
   return (
     <li className="upcome-event-card">
       <img
         loading="lazy"
         className="event-image"
-        src={`https://drive.google.com/thumbnail?id=${imageId}&sz=w${1000}-h${1000}`}
+        src={`https://drive.google.com/thumbnail?id=${imageId}&sz=w${1000}-h${1000}`} // modified image url--due modification, undesireable image has been accessed
         alt={`${item.cityName}`}
       />
 
