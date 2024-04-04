@@ -53,7 +53,6 @@ const Home = () => {
 
       setUpcomingList((prev) => [...prev, ...events]);
       setUpcomeTotalResults(events.length);
-      setPage(page + 1);
     } else {
       setFetchError("Network Error");
     }
