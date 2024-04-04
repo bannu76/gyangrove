@@ -21,12 +21,9 @@ const months = [
 // return upcome event
 const UpComeEvent = (props) => {
   const { item } = props;
-
   const urlArray = item.imgUrl.split("/");
   const imageId = urlArray[5];
-  console.log(imageId);
   const updateDate = new Date(item.date);
-
   const eventMonth = months[updateDate.getMonth()];
   const eventDate = updateDate.getDate();
   const eventYear = updateDate.getFullYear();

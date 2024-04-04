@@ -17,16 +17,19 @@ const Home = () => {
   const [upcomingList, setUpcomingList] = useState([]); // Upcomming Events list
 
   // Api call for recommend events
+
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
   const getData = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
     const url =
       "https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&type=reco";
     const response = await fetch(url, options);
+    console.log(response);
 
     if (response.ok) {
       const { events } = await response.json();
@@ -39,19 +42,13 @@ const Home = () => {
 
   // Api call for Upcoming events list
   const getUpcomeEventData = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
     const url = `https://gg-backend-assignment.azurewebsites.net/api/Events?code=FOX643kbHEAkyPbdd8nwNLkekHcL4z0hzWBGCd64Ur7mAzFuRCHeyQ==&page=${page}&type=upcoming`;
     const response = await fetch(url, options);
     console.log(response);
     if (response.ok) {
       const { events } = await response.json();
 
-      setUpcomingList((prev) => [...prev, ...events]);
+      setUpcomingList((prev) => prev.concat(events));
       setUpcomeTotalResults(events.length);
     } else {
       setFetchError("Network Error");
@@ -66,18 +63,23 @@ const Home = () => {
   );
 
   // Initial Api call when site is load
+  let shouldLog = true; //In React 18 , useEffect render twice with empty dependency, so we use temporary variable to control it
+
   useEffect(() => {
-    document.title = "City Celebratitons";
-    getData();
-    getUpcomeEventData();
+    if (shouldLog) {
+      shouldLog = false;
+      document.title = "City Celebratitons";
+      console.log("hello");
+      getData();
+    }
   }, []);
 
-  //
+  useEffect(() => {
+    getUpcomeEventData();
+  }, [page]);
 
   // Rendering Recommed List
   const renderRecommendList = () => {
-    console.log(upcomingList);
-
     return (
       <div>
         <div className="events-heading-container">
@@ -100,13 +102,13 @@ const Home = () => {
   };
 
   // api call to fetch pages of upcoming events for infinite scroll
-  const fetchMoreData = () => {
-    console.log(page);
-    getUpcomeEventData();
+  const fetchMoreData = async () => {
+    setPage((page) => page + 1);
   };
 
   // Rendering Upcoming Evnts List
   const renderUpcomingEvents = () => {
+    console.log(upcomingList);
     return (
       <div>
         <div className="upcome-heading-container">
@@ -121,7 +123,7 @@ const Home = () => {
 
         <InfiniteScroll
           dataLength={upcomingList.length}
-          next={getUpcomeEventData()}
+          next={fetchMoreData}
           hasMore={upcomingList.length !== upcomeTotalResults}
           loader={renderLoader()}
           className="upcome-container"
@@ -153,8 +155,8 @@ const Home = () => {
       </div>
       <div className="recommend-events-container">
         {load ? renderLoader() : renderRecommendList()}
+        {renderUpcomingEvents()}
       </div>
-      {renderUpcomingEvents()}
     </div>
   );
 };
