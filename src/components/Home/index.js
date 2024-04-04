@@ -12,7 +12,7 @@ const Home = () => {
   const [load, setLoad] = useState(true); // flag for upcoming events networkApi call
   const [fetchError, setFetchError] = useState(""); // network call error
   const [upcomeTotalResults, setUpcomeTotalResults] = useState(0); // total upcoming events length for infinite scrolling
-
+  const [upcomingLoader, setUpcomingLoader] = useState(true);
   const [recommendList, setRecommendList] = useState([]); // Recommend Events List
   const [upcomingList, setUpcomingList] = useState([]); // Upcomming Events list
 
@@ -50,6 +50,7 @@ const Home = () => {
 
       setUpcomingList((prev) => prev.concat(events));
       setUpcomeTotalResults(events.length);
+      setUpcomingLoader(false);
     } else {
       setFetchError("Network Error");
     }
@@ -78,6 +79,26 @@ const Home = () => {
     getUpcomeEventData();
   }, [page]);
 
+  const handleInfiniteScroll = async () => {
+    try {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
+      ) {
+        setUpcomingLoader(true);
+        setPage((prev) => prev + 1);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleInfiniteScroll);
+
+    return () => window.removeEventListener("scroll", handleInfiniteScroll);
+  }, []);
+
   // Rendering Recommed List
   const renderRecommendList = () => {
     return (
@@ -103,7 +124,7 @@ const Home = () => {
 
   // api call to fetch pages of upcoming events for infinite scroll
   const fetchMoreData = async () => {
-    setPage((page) => page + 1);
+    getUpcomeEventData();
   };
 
   // Rendering Upcoming Evnts List
@@ -121,17 +142,11 @@ const Home = () => {
           </div>
         </div>
 
-        <InfiniteScroll
-          dataLength={upcomingList.length}
-          next={fetchMoreData}
-          hasMore={upcomingList.length !== upcomeTotalResults}
-          loader={renderLoader()}
-          className="upcome-container"
-        >
+        <ul className="upcome-container">
           {upcomingList.map((item) => (
             <UpComeEvent key={upcomingList.indexOf(item)} item={item} />
           ))}
-        </InfiniteScroll>
+        </ul>
       </div>
     );
   };
@@ -156,6 +171,7 @@ const Home = () => {
       <div className="recommend-events-container">
         {load ? renderLoader() : renderRecommendList()}
         {renderUpcomingEvents()}
+        {renderLoader()}
       </div>
     </div>
   );
