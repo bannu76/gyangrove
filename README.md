@@ -1,3 +1,24 @@
+
+# Title: City Celebrations
+
+## DESCRIPTION: 
+City Celebrations shows all the Events, Festivals,movies,..etc, of all over the India. 
+
+## Features: 
+On choosing city/State name, it give a list of events of  the specific city/state. An event is shown with weather condition and a distance from your current location
+          
+          
+## Techologies: 
+React js,Javascript,RESTApi, 
+
+## Visuals: 
+Recommended Events are scrolled with details, upcoming events are shown with lazy loading feature for image  to increase performance  
+
+## Issues: 
+URL of google drive Images are not accessble, so Image urls has modified that lead to change in image size (Thumbnails)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
