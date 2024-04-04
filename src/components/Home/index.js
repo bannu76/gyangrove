@@ -8,7 +8,6 @@ import EventItem from "../EventItem";
 import InfiniteScroll from "react-infinite-scroll-component";
 import UpComeEvent from "../UpComeEvent";
 const Home = () => {
-  const [recommendLoad, setRecommendLoad] = useState(true); //flag to fetch recommended events
   const [page, setPage] = useState(1); // upcoming event's pages
   const [load, setLoad] = useState(true); // flag for upcoming events networkApi call
   const [fetchError, setFetchError] = useState(""); // network call error
@@ -17,9 +16,6 @@ const Home = () => {
   const [recommendList, setRecommendList] = useState([]); // Recommend Events List
   const [upcomingList, setUpcomingList] = useState([]); // Upcomming Events list
 
-  useEffect(() => {
-    document.title = "City Celebratitons";
-  }, []);
   // Api call for recommend events
   const getData = async () => {
     const options = {
@@ -72,6 +68,7 @@ const Home = () => {
 
   // Initial Api call when site is load
   useEffect(() => {
+    document.title = "City Celebratitons";
     getData();
     getUpcomeEventData();
   }, []);
