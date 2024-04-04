@@ -10,7 +10,7 @@ import UpComeEvent from "../UpComeEvent";
 const Home = () => {
   const [recommendLoad, setRecommendLoad] = useState(true); //flag to fetch recommended events
   const [page, setPage] = useState(1); // upcoming event's pages
-  const [upcomeLoad, setUpcomeLoad] = useState(true); // flag for upcoming events networkApi call
+  const [load, setLoad] = useState(true); // flag for upcoming events networkApi call
   const [fetchError, setFetchError] = useState(""); // network call error
   const [upcomeTotalResults, setUpcomeTotalResults] = useState(0); // total upcoming events length for infinite scrolling
 
@@ -31,7 +31,7 @@ const Home = () => {
 
     if (response.ok) {
       const { events } = await response.json();
-
+      setLoad(false);
       setRecommendList(events);
     } else {
       setFetchError("Network Error");
@@ -67,7 +67,7 @@ const Home = () => {
     </div>
   );
 
-  // Initial Api call when site is opened
+  // Initial Api call when site is load
   useEffect(() => {
     getData();
     getUpcomeEventData();
@@ -78,11 +78,23 @@ const Home = () => {
     console.log(upcomingList);
 
     return (
-      <ul className="scroll-container">
-        {recommendList.map((item) => (
-          <EventItem key={item.cityName} item={item} />
-        ))}
-      </ul>
+      <div>
+        <div className="events-heading-container">
+          <div className="row-container">
+            <p style={{ marginRight: "4px" }}>Recommended shows</p>
+            <FaArrowRight />
+          </div>
+          <div>
+            <button className="see-all-button">see all</button>
+          </div>
+        </div>
+
+        <ul className="scroll-container">
+          {recommendList.map((item) => (
+            <EventItem key={item.cityName} item={item} />
+          ))}
+        </ul>
+      </div>
     );
   };
 
@@ -137,20 +149,11 @@ const Home = () => {
             vulputate libero et velit interdum, ac
           </p>
         </div>
-        <div className="recommend-events-container">
-          <div className="events-heading-container">
-            <div className="row-container">
-              <p style={{ marginRight: "4px" }}>Recommended shows</p>
-              <FaArrowRight />
-            </div>
-            <div>
-              <button className="see-all-button">see all</button>
-            </div>
-          </div>
-          {renderRecommendList()}
-          {renderUpcomingEvents()}
-        </div>
       </div>
+      <div className="recommend-events-container">
+        {load ? renderLoader() : renderRecommendList()}
+      </div>
+      {renderUpcomingEvents()}
     </div>
   );
 };

@@ -24,7 +24,7 @@ const UpComeEvent = (props) => {
 
   const urlArray = item.imgUrl.split("/");
   const imageId = urlArray[5];
-
+  console.log(imageId);
   const updateDate = new Date(item.date);
 
   const eventMonth = months[updateDate.getMonth()];
@@ -39,8 +39,8 @@ const UpComeEvent = (props) => {
       <img
         loading="lazy"
         className="event-image"
-        src={`https://drive.google.com/thumbnail?id=${imageId}&sz=w${1000}-h${1000}`} // modified image url--due modification, undesireable image has been accessed
-        alt={`${item.cityName}`}
+        src={`https://drive.google.com/thumbnail?id=${imageId}&sz=w${1000}-h${1000}`} /// modified image url--due modification, undesireable image has been accessed
+        alt={`thumnai for ${item.cityName}`}
       />
 
       <div className="upcome-event-row-container">

@@ -1,34 +1,42 @@
 .home{
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
     
-    
-    
+    width: 100%;
 }
 .home-container-mobile{
     background-image: url("https://res.cloudinary.com/dcyavhlbc/image/upload/v1711846315/resize-17118462562000213487Banner2_ofbm1h.png");
-    min-height: 100vh;
+    min-height: 80vh;
+  
     background-size: cover;
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
+    
     z-index: 1;
     color: #ffffff;
     text-align: center;
-    padding: 12px;     
+    padding: 12px;  
+       
 }
 
 
 
 .heading-para-container{
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
 
 }
 .home-heading{
-    font-size: 25px;
-   
+    font-size: 120%;
 }
 .para{
-    font-size: 18px;
+    font-size: 100%;
     
 }
 
@@ -36,11 +44,11 @@
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    position: absolute;
-    
-    width: 98%;
+    position: relative;
+    color: #ffffff;
+    width: 100%;
     z-index: 2;
-    top: 70%;
+    margin-top: -285px;
 }
 
 .row-container{
@@ -53,21 +61,36 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 98%;
+    padding: 0px  32px 0px 32px; 
     justify-content: space-between;
+    position: relative;
+    margin-bottom: 0px;
+    
+   
+    
     
 }
+
+.loader-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .scroll-container{
-    
+    width: 100%;
     display: flex;
     flex-direction: row;
     white-space: nowrap;
     align-items: center;
     overflow-x: auto;
     scrollbar-width: none;
-    height: 400px; 
-     
-   
+    height: 350px; 
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    
      
 }
 .see-all-button{
@@ -83,10 +106,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 98%;
+    
     justify-content: space-between;
     color: #1E2022;
-    
+   
+    padding: 0px 32px 0px 32px;
 }
 .upcome-see-all-button{
     background-color:transparent;
@@ -98,33 +122,62 @@
 .upcome-event-container{
     display: flex;
     flex-direction: column;
-   
-  
-    border-style: solid;
-    
+    border-style: solid;    
 }
 
 .upcome-container{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
-    padding: 0px;
-    
+   padding: 0px 32px 0px 32px;
     
 }
 
 @media screen and (min-width:576px) {
+    
     .home-container-mobile{
         
-        padding-top: 20%;
+       
+        min-height: 80vh;
     }
+    .recommend-events-container{
+        margin-top: -180px;
+        
+    }
+    .home-heading{
+        font-size: 34px;
+        margin-top: 40px;
+    }
+    .para{
+        font-size: 20px;
+        width: 70%;       
+    }
+    .upcome-container{
+        justify-content: space-between;
+    }
+
     
 }
 @media screen and (max-width:576px) {
 
+   .events-heading-container{
+    margin-top: 100px;
+   }
+
+   .home-heading{
+    font-size: 100%;
+    width: 100%;
+   }
+   .para
+   {
+    width: 60%;
+    font-size: 80%;
+   }
+   .home-container-mobile{
+    min-height: 70vh;
+   }
    
     
 }

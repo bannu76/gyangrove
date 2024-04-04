@@ -2,7 +2,7 @@
 .event-card{
     
     max-height: 250px;
-    min-width: 48%;
+    min-width: 42%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,7 +29,7 @@
     flex-direction: column;
     position: relative;
     z-index: 1;
-    margin-top: -86px;
+    margin-top: -75px;
      align-self: center;
     min-width: 80%;
     
@@ -69,7 +69,7 @@
 @media screen and (max-width:576px) {
     
     .event-card{
-        min-width: 200px;
+        max-width: 120px;
     }
     .recomend-event-image{
         width: 100%;
@@ -85,6 +85,9 @@
     .event-name{
         width: 100%;
         font-size: 10px;
+    }
+    .event-container{
+        top: -0px;
     }
 
     .event-row-container{

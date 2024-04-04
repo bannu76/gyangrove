@@ -1,10 +1,9 @@
 *{
     font-family: Inter;
+    
 }
 
-.header{
-    padding: 12px;
-}
+
 .header-container-mobile{
     display: inline;
     flex-direction: column;
