@@ -1,21 +1,29 @@
 
 # Title: City Celebrations
 
-## DESCRIPTION: 
-City Celebrations shows all the Events, Festivals,movies,..etc, of all over the India. 
+![Screenshot 2024-04-04 at 21-54-50 City Celebratitons](https://github.com/bannu76/gyangrove/assets/101934172/308c14b0-5670-4edd-bb09-94fa6418cfde)
 
-## Features: 
-On choosing city/State name, it give a list of events of  the specific city/state. An event is shown with weather condition and a distance from your current location
+![Screenshot 2024-04-04 at 21-56-25 City Celebratitons](https://github.com/bannu76/gyangrove/assets/101934172/b7f50fc5-00c1-4adc-814e-e4a155a84621)
+
+
+
+## DESCRIPTION: 
+   1. City Celebrations shows all the Events, Festivals,movies,..etc, of all over the India.
+   2. Based on city, events, festivals, movies, etc.., are shown                 
           
-          
-## Techologies: 
-React js,Javascript,RESTApi, 
+## Technologies: 
+   1. React js, jsx
+   2. Javascript
+   3. RESTApi,
+   4. css,Html 
 
 ## Visuals: 
-Recommended Events are scrolled with details, upcoming events are shown with lazy loading feature for image  to increase performance  
+   1.Recommended Events are scrolled with details, upcoming events are shown with lazy loading feature for images
+   2.Infinite scrolling method is used to increase performance of webpage
 
-## Issues: 
-URL of google drive Images are not accessble, so Image urls has modified that lead to change in image size (Thumbnails)
+
+### Issues: 
+   URL of google drive Images are not accessble, so Image urls has modified that lead to change in image size (Thumbnails)
 
 
 
