@@ -17,6 +17,9 @@ const Home = () => {
   const [recommendList, setRecommendList] = useState([]); // Recommend Events List
   const [upcomingList, setUpcomingList] = useState([]); // Upcomming Events list
 
+  useEffect(() => {
+    document.title = "City Celebratitons";
+  }, []);
   // Api call for recommend events
   const getData = async () => {
     const options = {
