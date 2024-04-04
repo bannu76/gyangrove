@@ -34,6 +34,7 @@ const EventItem = (props) => {
   return (
     <li className="event-card">
       <img
+        loading="lazy"
         className="recomend-event-image"
         src={`https://drive.google.com/thumbnail?id=${imageId}&sz=w${1000}-h${1000}`} // image url has been modified, orignal url throws (CORBS warning and couldn't be seen on webpage),modified url gave undesired image ,so image borders have not been cut
         alt={`event banner for ${imageId}`}

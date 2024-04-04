@@ -29,7 +29,7 @@
     flex-direction: column;
     position: relative;
     z-index: 1;
-    margin-top: -75px;
+    margin-top: -85px;
      align-self: center;
     min-width: 80%;
     
@@ -48,7 +48,7 @@
 }
 .event-name{
     font-size: 40%;
-    width: 40%;
+    max-width: 40%;
     word-wrap: break-word;
     white-space: normal;
     text-align: left;

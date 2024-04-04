@@ -73,6 +73,8 @@ const Home = () => {
     getUpcomeEventData();
   }, []);
 
+  //
+
   // Rendering Recommed List
   const renderRecommendList = () => {
     console.log(upcomingList);
@@ -120,7 +122,7 @@ const Home = () => {
 
         <InfiniteScroll
           dataLength={upcomingList.length}
-          next={fetchMoreData}
+          next={getUpcomeEventData()}
           hasMore={upcomingList.length !== upcomeTotalResults}
           loader={renderLoader()}
           className="upcome-container"
